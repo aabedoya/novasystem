@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Vehiculos = () => {
   const [mostrarTabla, setMostrarTabla] = useState(true);
   const [vehiculos, setVehiculos] = useState([]);
-  const [textoBoton, setTextoBoton] = useState('Crear Nuevo Vehículo');
+  const [textoBoton, setTextoBoton] = useState('Crear Nuevo Producto');
   const [colorBoton, setColorBoton] = useState('indigo');
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -45,18 +45,18 @@ const Vehiculos = () => {
 
   useEffect(() => {
     if (mostrarTabla) {
-      setTextoBoton('Crear Nuevo Vehículo');
-      setColorBoton('indigo');
+      setTextoBoton('Crear Nuevo Producto');
+      setColorBoton('blue');
     } else {
-      setTextoBoton('Mostrar Todos los vehículos');
-      setColorBoton('green');
+      setTextoBoton('Mostrar Todos los productos');
+      setColorBoton('blue');
     }
   }, [mostrarTabla]);
   return (
     <div className='flex h-full w-full flex-col items-center justify-start p-8'>
       <div className='flex flex-col w-full'>
         <h2 className='text-3xl font-extrabold text-gray-900'>
-          Página de administración de vehículos
+          Maestro de Productos
         </h2>
         <button
           onClick={() => {
@@ -104,9 +104,9 @@ const TablaVehiculos = ({ loading, listaVehiculos, setEjecutarConsulta }) => {
         value={busqueda}
         onChange={(e) => setBusqueda(e.target.value)}
         placeholder='Buscar'
-        className='border-2 border-gray-700 px-3 py-1 self-start rounded-md focus:outline-none focus:border-indigo-500'
+        className='border-2 border-gray-700 px-3 py-1 self-start rounded-md focus:outline-none focus:border-blue-500'
       />
-      <h2 className='text-2xl font-extrabold text-gray-800'>Todos los vehículos</h2>
+      <h2 className='text-2xl font-extrabold text-gray-800'>Todos los productos</h2>
       <div className='hidden md:flex w-full'>
         {loading ? (
           <ReactLoading type='cylon' color='#abc123' height={667} width={375} />
@@ -115,9 +115,9 @@ const TablaVehiculos = ({ loading, listaVehiculos, setEjecutarConsulta }) => {
             <thead>
               <tr>
                 <th>Id</th>
-                <th>Nombre del vehículo</th>
-                <th>Marca del vehículo</th>
-                <th>Modelo del vehículo</th>
+                <th>Descripción del producto</th>
+                <th>Estado</th>
+                <th>Valor unitario</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -353,20 +353,20 @@ const FormularioCreacionVehiculos = ({ setMostrarTabla, listaVehiculos, setVehic
 
   return (
     <div className='flex flex-col items-center justify-center'>
-      <h2 className='text-2xl font-extrabold text-gray-800'>Crear nuevo vehículo</h2>
+      <h2 className='text-2xl font-extrabold text-gray-800'>Crear nuevo producto</h2>
       <form ref={form} onSubmit={submitForm} className='flex flex-col'>
         <label className='flex flex-col' htmlFor='nombre'>
-          Nombre del vehículo
+          Descripción del producto
           <input
             name='name'
             className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
             type='text'
-            placeholder='Corolla'
+            placeholder='Aquí la descripción '
             required
           />
         </label>
         <label className='flex flex-col' htmlFor='marca'>
-          Marca del vehículo
+          Estado del producto
           <select
             className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
             name='brand'
@@ -376,31 +376,27 @@ const FormularioCreacionVehiculos = ({ setMostrarTabla, listaVehiculos, setVehic
             <option disabled value={0}>
               Seleccione una opción
             </option>
-            <option>Renault</option>
-            <option>Toyota</option>
-            <option>Ford</option>
-            <option>Mazda</option>
-            <option>Chevrolet</option>
+            <option>Disponible</option>
+            <option>No disponible</option>
+           
           </select>
         </label>
         <label className='flex flex-col' htmlFor='modelo'>
-          Modelo del vehículo
+          Valor unitario
           <input
             name='model'
             className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
             type='number'
-            min={1992}
-            max={2022}
-            placeholder='2014'
+            placeholder='Ingrese el precio por unidad'
             required
           />
         </label>
 
         <button
           type='submit'
-          className='col-span-2 bg-green-400 p-2 rounded-full shadow-md hover:bg-green-600 text-white'
+          className='col-span-2 bg-blue-400 p-2 rounded-full shadow-md hover:bg-blue-600 text-white'
         >
-          Guardar vehiculo
+          Guardar producto
         </button>
       </form>
     </div>

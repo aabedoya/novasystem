@@ -20,9 +20,9 @@ const Sidebar = () => {
 
       <div className='my-4'>
         <Ruta icono='fas fa-user' ruta='/admin/perfil' nombre='Perfil' usuario={user} />
-        <Ruta icono='fas fa-car' ruta='/admin/vehiculos' nombre='Vehículos' />
-        <Ruta icono='fas fa-cash-register' ruta='/admin/ventas' nombre='Ventas' />
-        <Ruta icono='fas fa-users' ruta='/admin/usuarios' nombre='Usuarios' />
+        <Ruta icono='fas fa-box-open' ruta='/admin/vehiculos' nombre='Productos' />
+        <Ruta icono='fab fa-shopify' ruta='/admin/ventas' nombre='Ventas' />
+        <Ruta icono='fas fa-user-shield' ruta='/admin/usuarios' nombre='Usuarios' />
       </div>
       <button onClick={() => cerrarSesion()}>Cerrar Sesión</button>
     </nav>
@@ -36,8 +36,8 @@ const Ruta = ({ icono, ruta, nombre, usuario }) => {
     <Link to={ruta}>
       <button
         className={`p-1 my-2  bg-${
-          isActive ? 'indigo' : 'gray'
-        }-700 hover:bg-indigo-900 flex w-full items-center text-white rounded-md`}
+          isActive ? 'blue' : 'gray'
+        }-700 hover:bg-blue-900 flex w-full items-center text-white rounded-md`}
       >
         {usuario ? (
           <>
