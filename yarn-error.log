@@ -28,11 +28,11 @@ Trace:
 
 npm manifest: 
   {
-    "name": "api-concesionario",
+    "name": "novasystem",
     "version": "1.0.0",
     "main": "index.js",
-    "repository": "https://github.com/Mision-TIC-Ciclo-3/api-concesionario.git",
-    "author": "Daniel Saldarriaga <dsaldarriaga@prevalentware.com>",
+    "repository": "https://github.com/aabedoya/novasystem.git",
+    "author": "Andres Bedoya <andresbedoyagomez@gmail.com>",
     "license": "MIT",
     "type": "module",
     "scripts": {
