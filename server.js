@@ -9,7 +9,7 @@ import { conectarBD } from './db/db.js';
 import jwt from 'express-jwt';
 import jwks from 'jwks-rsa';
 
-import rutasVehiculo from './views/vehiculos/rutas.js';
+import rutasProducto from './views/productos/rutas.js';
 import rutasUsuario from './views/usuarios/rutas.js';
 import rutasVenta from './views/ventas/rutas.js';
 import autorizacionEstadoUsuario from './middleware/autorizacionEstadoUsuario.js';
@@ -26,10 +26,10 @@ var jwtCheck = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: 'https://misiontic-concesionario.us.auth0.com/.well-known/jwks.json',
+    jwksUri: 'https://misiontic-todoink.us.auth0.com/.well-known/jwks.json',
   }),
-  audience: 'api-autenticacion-concesionario-mintic',
-  issuer: 'https://misiontic-concesionario.us.auth0.com/',
+  audience: 'misiontic-nova.us.auth0.com',
+  issuer: 'https://misiontic-todoink.us.auth0.com/',
   algorithms: ['RS256'],
 });
 
@@ -38,7 +38,7 @@ app.use(jwtCheck);
 
 app.use(autorizacionEstadoUsuario);
 
-app.use(rutasVehiculo);
+app.use(rutasProducto);
 app.use(rutasUsuario);
 app.use(rutasVenta);
 
