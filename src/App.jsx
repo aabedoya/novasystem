@@ -3,7 +3,7 @@ import PrivateLayout from 'layouts/PrivateLayout';
 import PublicLayout from 'layouts/PublicLayout';
 import Index from 'pages/Index';
 import Admin from 'pages/admin/Index';
-import Vehiculos from 'pages/admin/Vehiculos';
+import Productos from 'pages/admin/Productos';
 import Login from 'pages/auth/Login';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'styles/styles.css';
@@ -35,12 +35,12 @@ function App() {
           <DarkModeContext.Provider value={{ darkMode, setDarkMode }}>
             <Router>
               <Switch>
-                <Route path={['/admin', '/admin/vehiculos', '/admin/ventas', '/admin/usuarios']}>
+                <Route path={['/admin', '/admin/productos', '/admin/ventas', '/admin/usuarios']}>
                   <PrivateLayout>
                     <Switch>
-                      <Route path='/admin/vehiculos'>
+                      <Route path='/admin/productos'>
                         <PrivateRoute roleList={['admin']}>
-                          <Vehiculos />
+                          <Productos />
                         </PrivateRoute>
                       </Route>
                       <Route path='/admin/ventas'>
