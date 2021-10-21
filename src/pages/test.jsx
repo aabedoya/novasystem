@@ -6,7 +6,7 @@ import { obtenerProductos } from 'utils/api';
 
 const Test = () => {
   const [usuarios, setUsuarios] = useState([]);
-  const [vehiculos, setProductos] = useState([]);
+  const [productos, setProductos] = useState([]);
   const form = useRef(null);
 
   useEffect(() => {
@@ -15,8 +15,8 @@ const Test = () => {
   }, []);
 
   useEffect(() => {
-    console.log(vehiculos);
-  }, [vehiculos]);
+    console.log(productos);
+  }, [productos]);
 
   useEffect(() => {
     console.log(usuarios);
@@ -33,7 +33,7 @@ const Test = () => {
 
     const informacionConsolidada = {
       valor: nuevaVenta.cantidadVenta,
-      vehiculo: vehiculos.filter((el) => el._id === nuevaVenta.vehiculo)[0],
+      producto: productos.filter((el) => el._id === nuevaVenta.producto)[0],
       vendedor: usuarios.filter((el) => el._id === nuevaVenta.vendedor)[0],
     };
     console.log(informacionConsolidada);
@@ -62,7 +62,7 @@ const Test = () => {
       Crear nueva venta
       <form ref={form} onSubmit={submitForm} className='flex flex-col'>
         <label>
-          Seleccionar Vehiculo
+          Seleccionar Producto
           <select name='vendedor'>
             {usuarios.map((u) => {
               return (
@@ -74,9 +74,9 @@ const Test = () => {
           </select>
         </label>
         <label>
-          Seleccionar Vehiculo
-          <select name='vehiculo'>
-            {vehiculos.map((v) => {
+          Seleccionar Producto
+          <select name='producto'>
+            {productos.map((v) => {
               return (
                 <option value={v._id} key={nanoid()}>
                   {v.name}

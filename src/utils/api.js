@@ -4,10 +4,10 @@ const getToken = () => {
   return `Bearer ${localStorage.getItem('token')}`;
 };
 
-export const obtenerVehiculos = async (successCallback, errorCallback) => {
+export const obtenerProductos = async (successCallback, errorCallback) => {
   const options = {
     method: 'GET',
-    url: 'http://localhost:5000/vehiculos/',
+    url: 'http://localhost:5000/productos/',
     headers: {
       Authorization: getToken(),
     },
@@ -15,30 +15,30 @@ export const obtenerVehiculos = async (successCallback, errorCallback) => {
   await axios.request(options).then(successCallback).catch(errorCallback);
 };
 
-export const crearVehiculo = async (data, successCallback, errorCallback) => {
+export const crearProducto = async (data, successCallback, errorCallback) => {
   const options = {
     method: 'POST',
-    url: 'http://localhost:5000/vehiculos/',
+    url: 'http://localhost:5000/productos/',
     headers: { 'Content-Type': 'application/json', Authorization: getToken() },
     data,
   };
   await axios.request(options).then(successCallback).catch(errorCallback);
 };
 
-export const editarVehiculo = async (id, data, successCallback, errorCallback) => {
+export const editarProducto = async (id, data, successCallback, errorCallback) => {
   const options = {
     method: 'PATCH',
-    url: `http://localhost:5000/vehiculos/${id}/`,
+    url: `http://localhost:5000/productos/${id}/`,
     headers: { 'Content-Type': 'application/json', Authorization: getToken() },
     data,
   };
   await axios.request(options).then(successCallback).catch(errorCallback);
 };
 
-export const eliminarVehiculo = async (id, successCallback, errorCallback) => {
+export const eliminarProducto = async (id, successCallback, errorCallback) => {
   const options = {
     method: 'DELETE',
-    url: `http://localhost:5000/vehiculos/${id}/`,
+    url: `http://localhost:5000/productos/${id}/`,
     headers: { 'Content-Type': 'application/json', Authorization: getToken() },
   };
   await axios.request(options).then(successCallback).catch(errorCallback);

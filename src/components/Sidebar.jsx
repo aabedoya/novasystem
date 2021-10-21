@@ -22,7 +22,7 @@ const Sidebar = () => {
       <div className='my-4'>
         <Ruta icono='fas fa-user' ruta='/admin/perfil' nombre='Perfil' usuario={user} />
         <PrivateComponent roleList={['admin']}>
-          <Ruta icono='fas fa-car' ruta='/admin/vehiculos' nombre='Vehículos' />
+          <Ruta icono='fas fa-car' ruta='/admin/productos' nombre='Vehículos' />
         </PrivateComponent>
         <PrivateComponent roleList={['admin', 'vendedor']}>
           <Ruta icono='fas fa-cash-register' ruta='/admin/ventas' nombre='Ventas' />
