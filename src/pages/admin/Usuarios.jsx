@@ -25,7 +25,7 @@ const Usuarios = () => {
   return (
     <div>
       <div>admin usuarios</div>
-      <PrivateComponent roleList={['admin']}>
+      <PrivateComponent roleList={['admin','vendedor']}>
         <button className='bg-red-400'>Hola RBAC</button>
       </PrivateComponent>
       <table className='tabla'>

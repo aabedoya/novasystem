@@ -24,7 +24,7 @@ const PrivateLayout = ({ children }) => {
       // 1. pedir token a auth0
       setLoadingUserInformation(true);
       const accessToken = await getAccessTokenSilently({
-        audience: `api-autenticacion-concesionario-mintic`,
+        audience: 'misiontic-nova.us.auth0.com',
       });
       // 2. recibir token de auth0
       localStorage.setItem('token', accessToken);

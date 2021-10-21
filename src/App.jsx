@@ -25,10 +25,10 @@ function App() {
 
   return (
     <Auth0Provider
-      domain='misiontic-concesionario.us.auth0.com'
-      clientId='WsdhjjQzDLIZEHA6ouuxXGxFONFGAQ4g'
+      domain='misiontic-nova.us.auth0.com'
+      clientId='YjfQiSQi7MyEp5ERNG7gMuCoOb3SGI5P'
       redirectUri='http://localhost:3000/admin'
-      audience='api-autenticacion-concesionario-mintic'
+      audience='misiontic-nova.us.auth0.com'
     >
       <div className='App'>
         <UserContext.Provider value={{ userData, setUserData }}>
