@@ -11,6 +11,7 @@ const queryAllUsers = async (callback) => {
 const crearUsuario = async (datosUsuario, callback) => {
   const baseDeDatos = getDB();
   await baseDeDatos.collection('usuarios').insertOne(datosUsuario, callback);
+  
 };
 
 const consultarUsuario = async (id, callback) => {
@@ -30,8 +31,10 @@ const consultarOCrearUsuario = async (req, callback) => {
     console.log('response consulta bd', response);
     if (response) {
       // 7.1. si el usuario ya esta en la BD, devuelve la info del usuario
+      console.log('Esta creado');
       callback(err, response);
     } else {
+      console.log('Deberìa crearlo');
       // 7.2. si el usuario no esta en la bd, lo crea y devuelve la info
       user.auth0ID = user._id;
       delete user._id;
@@ -41,7 +44,7 @@ const consultarOCrearUsuario = async (req, callback) => {
     }
   });
 };
-
+ 
 const editarUsuario = async (id, edicion, callback) => {
   const filtroUsuario = { _id: new ObjectId(id) };
   const operacion = {

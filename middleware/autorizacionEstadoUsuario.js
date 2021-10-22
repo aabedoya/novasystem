@@ -10,9 +10,11 @@ const autorizacionEstadoUsuario = async (req, res, next) => {
 
   // paso 2: consultar el usuario en la BD
   const baseDeDatos = getDB();
-  await baseDeDatos.collection('usuario').findOne({ email: user.email }, async (err, response) => {
+  console.log('Antes await');
+  await baseDeDatos.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
+    console.log('Dentro del await');
     if (response) {
-      console.log('respuesta del hpta este', response);
+      console.log('respuesta de Mongo', response);
       // paso 3: verificar el estado del usuario.
       if (response.estado === 'rechazado') {
         // paso 4: si el usuario es rechazado, devolver un error de autenticacion.
@@ -23,8 +25,11 @@ const autorizacionEstadoUsuario = async (req, res, next) => {
         // paso 5: si el usuario está pendiente o habilitado, ejecutar next()
         next();
       }
+    }else{
+      next();
     }
   });
+
 };
 
 export default autorizacionEstadoUsuario;

@@ -26,13 +26,13 @@ var jwtCheck = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: 'https://misiontic-todoink.us.auth0.com/.well-known/jwks.json',
+    jwksUri: 'https://misiontic-nova.us.auth0.com/.well-known/jwks.json',
   }),
-  audience: 'misiontic-nova.us.auth0.com',
-  issuer: 'https://misiontic-todoink.us.auth0.com/',
+  audience: 'https://misiontic-nova.us.auth0.com/api/v2/',
+  issuer: 'https://misiontic-nova.us.auth0.com/',
   algorithms: ['RS256'],
 });
-
+ 
 // 4 y 5: enviarle el token a auth0 para que devuelva si es valido o no
 app.use(jwtCheck);
 
