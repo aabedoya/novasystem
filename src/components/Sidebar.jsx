@@ -48,7 +48,7 @@ const Ruta = ({ icono, ruta, nombre, usuario }) => {
       >
         {usuario ? (
           <>
-            <img src={usuario.picture} className='h-5 w-5 rounded-full' />
+            <img src={usuario.picture} className='h-5 w-5 rounded-full' alt="imagen" />
             {usuario.name}
           </>
         ) : (

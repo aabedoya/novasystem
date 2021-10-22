@@ -28,7 +28,7 @@ function App() {
       domain='misiontic-nova.us.auth0.com'
       clientId='YjfQiSQi7MyEp5ERNG7gMuCoOb3SGI5P'
       redirectUri='http://localhost:3000/admin'
-      audience='misiontic-nova.us.auth0.com'
+      audience='https://misiontic-nova.us.auth0.com/api/v2/'
     >
       <div className='App'>
         <UserContext.Provider value={{ userData, setUserData }}>
