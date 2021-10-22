@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     console.log('modo dark:', darkMode);
   }, [darkMode]);
-
+ 
   return (
     <Auth0Provider
       domain='misiontic-nova.us.auth0.com'

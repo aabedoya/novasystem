@@ -49,11 +49,11 @@ const Test = () => {
       .request(options)
       .then(function (response) {
         console.log(response.data);
-        // toast.success('Vehículo agregado con éxito');
+        // toast.success('Producto agregado con éxito');
       })
       .catch(function (error) {
         console.error(error);
-        // toast.error('Error creando un vehículo');
+        // toast.error('Error creando un Producto');
       });
   };
 

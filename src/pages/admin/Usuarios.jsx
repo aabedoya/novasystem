@@ -3,7 +3,8 @@ import { nanoid } from 'nanoid';
 import React, { useState, useEffect } from 'react';
 import { editarUsuario } from 'utils/api';
 import { obtenerUsuarios } from 'utils/api';
-
+ 
+ 
 const Usuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
 

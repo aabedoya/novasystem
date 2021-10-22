@@ -38,13 +38,13 @@ import { obtenerUsuarios } from 'utils/api';
 //   }, []);
 
 //   const modifyVeh = (v, e) => {
-//     const vehs = productos.map((ve) => {
+//     const prod = productos.map((ve) => {
 //       if (ve._id === v._id) {
 //         ve.cantidad = e;
 //       }
 //       return ve;
 //     });
-//     setProductos(vehs);
+//     setProductos(prod);
 //   };
 
 //   useEffect(() => {
@@ -162,7 +162,7 @@ const Ventas = () => {
               Seleccione un Vendedor
             </option>
             {vendedores.map((el) => {
-              return <option key={nanoid()} value={el._id}>{`${el.email}`}</option>;
+              return <option key={nanoid()} value={el._id}>{`${el.nickname}`}</option>;
             })}
           </select>
         </label>
@@ -175,16 +175,16 @@ const Ventas = () => {
 
         <label className='flex flex-col'>
           <span className='text-2xl font-gray-900'>Valor Total Venta</span>
-          <input
-            className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
-            type='number'
+          <label
+            className='bg-gray-50 border border-gray-400 p-5 rounded-lg m-5'
+            type='float'
             name='valor'
             required
           />
         </label>
         <button
           type='submit'
-          className='col-span-2 bg-green-400 p-2 rounded-full shadow-md hover:bg-green-600 text-white'
+          className='col-span-2 bg-blue-400 p-2 rounded-full shadow-md hover:bg-blue-600 text-white'
         >
           Crear Venta
         </button>
@@ -243,7 +243,7 @@ const TablaProductos = ({ productos, setProductos, setProductosTabla }) => {
                 <option
                   key={nanoid()}
                   value={el._id}
-                >{`${el.name} ${el.brand} ${el.model}`}</option>
+                >{`${el.descripcion} ${el.estado} ${el.valor}`}</option>
               );
             })}
           </select>
@@ -251,19 +251,18 @@ const TablaProductos = ({ productos, setProductos, setProductosTabla }) => {
         <button
           type='button'
           onClick={() => agregarNuevoProducto()}
-          className='col-span-2 bg-green-400 p-2 rounded-full shadow-md hover:bg-green-600 text-white'
+          className='col-span-2 bg-blue-400 p-2 rounded-full shadow-md hover:bg-blue-600 text-white'
         >
-          Agregar Vehículo
+          Agregar Producto
         </button>
       </div>
       <table className='tabla'>
         <thead>
           <tr>
             <th>Id</th>
-            <th>Nombre</th>
-            <th>Marca</th>
-            <th>Modelo</th>
-            <th>Cantidad</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Cantidad</th> 
             <th>Valor Unitario</th>
             <th>Total</th>
             <th>Eliminar</th>
@@ -275,7 +274,7 @@ const TablaProductos = ({ productos, setProductos, setProductosTabla }) => {
             return (
               <FilaProducto
                 key={el._id}
-                veh={el}
+                prod={el}
                 index={index}
                 eliminarProducto={eliminarProducto}
                 modificarProducto={modificarProducto}
@@ -288,17 +287,17 @@ const TablaProductos = ({ productos, setProductos, setProductosTabla }) => {
   );
 };
 
-const FilaProducto = ({ veh, index, eliminarProducto, modificarProducto }) => {
-  const [producto, setProducto] = useState(veh);
+const FilaProducto = ({ prod, index, eliminarProducto, modificarProducto }) => {
+  const [producto, setProducto] = useState(prod);
   useEffect(() => {
-    console.log('veh', producto);
+    console.log('prod', producto);
   }, [producto]);
   return (
     <tr>
       <td>{producto._id}</td>
-      <td>{producto.name}</td>
-      <td>{producto.brand}</td>
-      <td>{producto.model}</td>
+      <td>{producto.descripcion}</td>
+      <td>{producto.estado}</td>
+      
       <td>
         <label htmlFor={`valor_${index}`}>
           <input
@@ -329,7 +328,9 @@ const FilaProducto = ({ veh, index, eliminarProducto, modificarProducto }) => {
       <td className='hidden'>
         <input hidden defaultValue={producto._id} name={`producto_${index}`} />
       </td>
+      
     </tr>
+    
   );
 };
 
