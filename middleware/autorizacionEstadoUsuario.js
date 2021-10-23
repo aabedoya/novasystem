@@ -26,6 +26,7 @@ const autorizacionEstadoUsuario = async (req, res, next) => {
         next();
       }
     }else{
+      console.log('SIN RESPUESTA');
       next();
     }
   });
