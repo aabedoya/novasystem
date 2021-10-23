@@ -20,7 +20,7 @@ const port = process.env.PORT || 5000;
 
 const app = Express();
 
-app.use(Express.json());
+app.use(Express.json()); 
 app.use(Cors());
 
 var jwtCheck = jwt({
