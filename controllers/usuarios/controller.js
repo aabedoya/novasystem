@@ -23,7 +23,7 @@ const consultarOCrearUsuario = async (req, callback) => {
   console.log('Estoy llegando a crear usuario');
   // 6.1. obtener los datos del usuario desde el token
   const token = req.headers.authorization.split('Bearer ')[1];
-  const user = jwt_decode(token)['http://localhost/userData'];
+  const user = jwt_decode(token)['https://infinite-forest-27321.herokuapp.com/userData'];
   console.log(user);
 
   // 6.2. con el correo del usuario o con el id de auth0, verificar si el usuario ya esta en la bd o no
