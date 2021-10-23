@@ -18,8 +18,8 @@ const conectarBD = (callback) => {
       console.error('Error conectando a la base de datos');
       return 'error';
     }
-    baseDeDatos = db.db('concesionario');
-    console.log('baseDeDatos exitosa');
+    baseDeDatos = db.db('codenova');
+    console.log('Conectado a codenova en mongo');
     return callback();
   });
 };

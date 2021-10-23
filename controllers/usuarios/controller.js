@@ -5,17 +5,18 @@ import jwt_decode from 'jwt-decode';
 const queryAllUsers = async (callback) => {
   const baseDeDatos = getDB();
   console.log('query');
-  await baseDeDatos.collection('usuario').find({}).limit(50).toArray(callback);
+  await baseDeDatos.collection('usuarios').find({}).limit(50).toArray(callback);
 };
 
 const crearUsuario = async (datosUsuario, callback) => {
   const baseDeDatos = getDB();
-  await baseDeDatos.collection('usuario').insertOne(datosUsuario, callback);
+  await baseDeDatos.collection('usuarios').insertOne(datosUsuario, callback);
+  
 };
 
 const consultarUsuario = async (id, callback) => {
   const baseDeDatos = getDB();
-  await baseDeDatos.collection('usuario').findOne({ _id: new ObjectId(id) }, callback);
+  await baseDeDatos.collection('usuarios').findOne({ _id: new ObjectId(id) }, callback);
 };
 
 const consultarOCrearUsuario = async (req, callback) => {
@@ -27,12 +28,14 @@ const consultarOCrearUsuario = async (req, callback) => {
 
   // 6.2. con el correo del usuario o con el id de auth0, verificar si el usuario ya esta en la bd o no
   const baseDeDatos = getDB();
-  await baseDeDatos.collection('usuario').findOne({ email: user.email }, async (err, response) => {
+  await baseDeDatos.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
     console.log('response consulta bd', response);
     if (response) {
       // 7.1. si el usuario ya esta en la BD, devuelve la info del usuario
+      console.log('Esta creado');
       callback(err, response);
     } else {
+      console.log('Deberìa crearlo');
       // 7.2. si el usuario no esta en la bd, lo crea y devuelve la info
       user.auth0ID = user._id;
       delete user._id;
@@ -42,7 +45,7 @@ const consultarOCrearUsuario = async (req, callback) => {
     }
   });
 };
-
+ 
 const editarUsuario = async (id, edicion, callback) => {
   const filtroUsuario = { _id: new ObjectId(id) };
   const operacion = {
@@ -50,14 +53,14 @@ const editarUsuario = async (id, edicion, callback) => {
   };
   const baseDeDatos = getDB();
   await baseDeDatos
-    .collection('usuario')
+    .collection('usuarios')
     .findOneAndUpdate(filtroUsuario, operacion, { upsert: true, returnOriginal: true }, callback);
 };
 
 const eliminarUsuario = async (id, callback) => {
   const filtroUsuario = { _id: new ObjectId(id) };
   const baseDeDatos = getDB();
-  await baseDeDatos.collection('usuario').deleteOne(filtroUsuario, callback);
+  await baseDeDatos.collection('usuarios').deleteOne(filtroUsuario, callback);
 };
 
 export {
