@@ -26,11 +26,9 @@ const autorizacionEstadoUsuario = async (req, res, next) => {
         next();
       }
     }else{
-      console.log('!!! SIN RESPUESTA DE MONGO ');
-      next();
+      next();      
     }
   });
-
 };
 
 export default autorizacionEstadoUsuario;
